@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #f4f5f7;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 1.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .habit-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .habit-form input {
+      flex: 1;
+      padding: 0.6rem 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .habit-form input:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+
+    .habit-form button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      background: #4a90e2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .habit-form button:hover {
+      background: #357abd;
+    }
+
+    #habit-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #habit-list li {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid #eee;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Habit Tracker</h1>
+
+    <form class="habit-form" id="habit-form">
+      <input id="habit-input" type="text" placeholder="Add a habit..." autocomplete="off">
+      <button type="submit">Add</button>
+    </form>
+
+    <ul id="habit-list"></ul>
+  </main>
+
+  <script>
+    const form = document.getElementById("habit-form");
+    const input = document.getElementById("habit-input");
+    const list = document.getElementById("habit-list");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (!value) return;
+
+      const li = document.createElement("li");
+      li.textContent = value;
+      list.appendChild(li);
+
+      input.value = "";
+      input.focus();
+    });
+  </script>
+</body>
+</html>
